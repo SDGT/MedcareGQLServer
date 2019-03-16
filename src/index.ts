@@ -1,4 +1,9 @@
 import express from "express";
+import path from  "path";
+import bodyParser from 'body-parser';
+import router from './server/routes/api';
+
+
 // Or, if you're not using a transpiler:
 const Eureka = require('eureka-js-client').Eureka;
 
@@ -9,6 +14,20 @@ import cors from 'cors';
 const app = express();
 const port = 3000; // default port to listen
 app.use(cors());
+
+// Parsers for POST data
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+ // Point static path to dist
+ app.use(express.static(path.join(__dirname, 'dist')));
+
+// Set our api routes
+app.use('/api', router);
+
+
+
+
 
 const schema = gql`
   type Query {
@@ -37,15 +56,12 @@ const server = new ApolloServer({
 
 server.applyMiddleware({ app, path: '/graphql' });
 
-// define a route handler for the default home page
-app.get( "/", ( req, res ) => {
-    res.send( "Hello world!" );
-} );
 
-app.get('/test',function(req,res,next){
-    res.send({"hello":"shaikhriyaz"});
-  })
-
+// Catch all other routes and return the index file
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+ 
 const eureka = new Eureka({
     instance: {
       app: 'exapp',

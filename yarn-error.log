@@ -1,0 +1,64 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add body-parser
+
+PATH: 
+  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\TortoiseGit\bin;C:\Program Files\Git\cmd;C:\devsoftware\apache-maven-3.5.4\bin;C:\Program Files\nodejs\;C:\PostgreSQL\pg96\bin;C:\Program Files\PuTTY\;C:\Program Files (x86)\Yarn\bin\;C:\Go\bin;C:\Users\Jawath\AppData\Local\Programs\Python\Python37-32\Scripts\;C:\Users\Jawath\AppData\Local\Programs\Python\Python37-32\;C:\Users\Jawath\AppData\Local\Microsoft\WindowsApps;C:\Users\Jawath\AppData\Roaming\npm;C:\Users\Jawath\AppData\Local\Yarn\bin;C:\Users\Jawath\go\bin;C:\Users\Jawath\AppData\Local\Programs\Microsoft VS Code\bin
+
+Yarn version: 
+  1.12.3
+
+Node version: 
+  10.13.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@types%2fgraphql: ESOCKETTIMEDOUT
+      at ClientRequest.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:129645:19)
+      at Object.onceWrapper (events.js:273:13)
+      at ClientRequest.emit (events.js:182:13)
+      at TLSSocket.emitRequestTimeout (_http_client.js:661:40)
+      at Object.onceWrapper (events.js:273:13)
+      at TLSSocket.emit (events.js:182:13)
+      at TLSSocket.Socket._onTimeout (net.js:449:8)
+      at ontimeout (timers.js:436:11)
+      at tryOnTimeout (timers.js:300:5)
+      at listOnTimeout (timers.js:263:5)
+
+npm manifest: 
+  {
+    "name": "expressts",
+    "version": "1.0.0",
+    "description": "",
+    "main": "dist/index.js",
+    "scripts": {
+      "build": "tsc",
+      "prestart": "npm run build",
+      "start": "node .",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "@types/graphql": "^14.0.7",
+      "apollo-server": "^2.4.8",
+      "apollo-server-express": "^2.4.8",
+      "cors": "^2.8.5",
+      "eureka-js-client": "^4.4.2",
+      "express": "^4.16.4",
+      "graphql": "^14.1.1"
+    },
+    "devDependencies": {
+      "@types/express": "^4.16.1",
+      "@types/node": "^11.11.3",
+      "tslint": "^5.14.0",
+      "typescript": "^3.3.3333"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
