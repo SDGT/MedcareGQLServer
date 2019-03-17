@@ -1,3 +1,4 @@
 dist
+webapp-distribution
 node_modules
 /package-lock.json

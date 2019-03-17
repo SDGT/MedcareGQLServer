@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
  // Point static path to dist
- app.use(express.static(path.join(__dirname, 'dist')));
+ app.use(express.static('webapp-distribution/public'));
 
 // Set our api routes
 app.use('/api', router);
@@ -43,7 +43,7 @@ const resolvers = {
   Query: {
     me: () => {
       return {
-        username: 'Robin Wieruch',
+        username: 'mj',
       };
     },
   },

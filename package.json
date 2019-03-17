@@ -2,7 +2,7 @@
   "name": "expressts",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "webapp-distribution/index.js",
   "scripts": {
     "build": "tsc",
     "prestart": "npm run build",
