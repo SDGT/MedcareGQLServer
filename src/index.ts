@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
  // Point static path to dist
- app.use(express.static('webapp-distribution/public'));
+ app.use(express.static('public'));
 
 // Set our api routes
 app.use('/api', router);
