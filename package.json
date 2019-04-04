@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/graphql": "^14.0.7",
+    "apollo-datasource-rest": "^0.3.2",
     "apollo-server": "^2.4.8",
     "apollo-server-express": "^2.4.8",
     "cors": "^2.8.5",

@@ -9,6 +9,8 @@ const Eureka = require('eureka-js-client').Eureka;
 
 import { ApolloServer, gql } from 'apollo-server-express';
 import cors from 'cors';
+import { apolloserver } from "./server/GQLDefs";
+
 
 
 const app = express();
@@ -25,34 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Set our api routes
 app.use('/api', router);
 
-
-
-
-
-const schema = gql`
-  type Query {
-    me: User
-  }
-
-  type User {
-    username: String!
-  }
-`;
-
-const resolvers = {
-  Query: {
-    me: () => {
-      return {
-        username: 'mj',
-      };
-    },
-  },
-};
-
-const server = new ApolloServer({
-  typeDefs: schema,
-  resolvers,
-});
+const server = apolloserver;
 
 server.applyMiddleware({ app, path: '/graphql' });
 
@@ -62,41 +37,10 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
  
-const eureka = new Eureka({
-    instance: {
-      app: 'exapp',
-      hostName: 'localhost',
-      ipAddr: '127.0.0.1',
-      statusPageUrl: 'http://localhost:3000',
-      port: {
-        '$': port,
-        '@enabled': 'true',
-      },
-      vipAddress: 'exapp',
-      dataCenterInfo: {
-        '@class': 'com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo',
-        name: 'MyOwn',
-      }
-    },
-    eureka: {
-      host: 'localhost',
-      port: 8761,
-      servicePath: '/eureka/apps/'
-    }
-  });
-  eureka.logger.level('debug');
-  eureka.start((error:any)=>{
-    console.log(error || 'complete');
-  });
-  
-  const data = {
-    me: {
-      username: 'Robin Wieruch',
-    },
-  };
-
 // start the Express server
 app.listen( port, () => {
     // tslint:disable-next-line:no-console
     console.log( `server started at http://localhost:${ port }` );
 });
+
+
