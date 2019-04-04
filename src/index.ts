@@ -9,7 +9,7 @@ const Eureka = require('eureka-js-client').Eureka;
 
 import { ApolloServer, gql } from 'apollo-server-express';
 import cors from 'cors';
-import { apolloserver } from "./server/GQLDefs";
+import apolloserver  from "./server/GqlServerBootstrap";
 
 
 
