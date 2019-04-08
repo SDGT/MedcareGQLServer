@@ -15,7 +15,11 @@ export class httpRequests extends RESTDataSource {
     request.headers.set("X-USERNAME", this.context["X-USERNAME"]);
   }
 
-  httpGet(url: string, params?: any) {
-    return this.get(url, params);
+  httpGet(path: string, params?: any) {
+    return this.get(path, params);
+  }
+
+  httpPost(path: string, body: any) {
+    return this.post(path, body);
   }
 }
