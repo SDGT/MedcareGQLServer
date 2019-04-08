@@ -31,7 +31,7 @@ app.get("*", (req, res) => {
 
 const eureka = new Eureka({
   instance: {
-    app: "exapp",
+    app: "GRAPHQL-SERVICE",
     hostName: "localhost",
     ipAddr: "127.0.0.1",
     statusPageUrl: "http://localhost:3000",
@@ -39,7 +39,7 @@ const eureka = new Eureka({
       $: port,
       "@enabled": "true"
     },
-    vipAddress: "exapp",
+    vipAddress: "GRAPHQL-SERVICE",
     dataCenterInfo: {
       "@class": "com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo",
       name: "MyOwn"
