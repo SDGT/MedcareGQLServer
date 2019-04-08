@@ -44,7 +44,7 @@ export class QueueAPI extends httpRequests {
   }
 
   async getFilteredQueues(doctor: string, department: string) {
-    return this.get("que-service/que/bycriteria", {
+    return this.httpGet("que-service/que/bycriteria", {
       doctor,
       department
     });
