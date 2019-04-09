@@ -3,7 +3,7 @@ import { RESTDataSource } from "apollo-datasource-rest";
 export class httpRequests extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = "https://zuulqa.sdglobaltech.com/";
+    this.baseURL = "https://zuuldev.sdglobaltech.com/";
   }
 
   willSendRequest(request) {
