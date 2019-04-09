@@ -18,11 +18,11 @@ export const queueschema = makeExecutableSchema({
         roomNo: String
         sequenceNumber: String
         status: String
-        tokenNo: String!
+        tokenNo: String
         unitCode: String
       }
       type Query {
-        queuesFiltered(doctor: String!, department: String!): [Queue]
+        queuesFiltered(doctor: String, department: String): [Queue]
         queues: [Queue]
       }
     `
