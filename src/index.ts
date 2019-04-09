@@ -19,23 +19,23 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static("public"));
 
 app.use(function(req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", "*");
 
   // Request methods you wish to allow
-  res.setHeader(
+  res.header(
     "Access-Control-Allow-Methods",
     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
   );
 
   // Request headers you wish to allow
-  res.setHeader(
+  res.header(
     "Access-Control-Allow-Headers",
-    "Origin, Content-Type, X-Auth-Token, X-ORGCODE, X-ORGID, X-UNITCODE, X-UNITID, X-USERID, X-USERNAME"
+    "Origin, Content-Type, X-Requested-With, X-ORGCODE, X-ORGID, X-UNITCODE, X-UNITID, X-USERID, X-USERNAME"
   );
 
   // Set to true if you need the website to include cookies in the requests sent
   // to the API (e.g. in case you use sessions)
-  res.setHeader("Access-Control-Allow-Credentials", "false");
+  res.header("Access-Control-Allow-Credentials", "false");
 
   // Pass to next layer of middleware
   next();
@@ -56,9 +56,9 @@ app.get("*", (req, res) => {
 const eureka = new Eureka({
   instance: {
     app: "GRAPHQL-SERVICE",
-    hostName: "localhost",
+    hostName: "medcaredev:graphql-service:3000",
     ipAddr: "127.0.0.1",
-    //statusPageUrl: "http://192.168.120.14:3000/graphql",
+    statusPageUrl: "http://192.168.120.14:3000/graphql",
     port: {
       $: port,
       "@enabled": "true"
