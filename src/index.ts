@@ -9,17 +9,7 @@ const Eureka = require("eureka-js-client").Eureka;
 const app = express();
 const port = 3000; // default port to listen
 app.use(cors());
-
-var allowCrossDomain = function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-  res.header("Access-Control-Allow-Headers", "*");
-  next();
-};
-
-app.configure(function() {
-  app.use(allowCrossDomain);
-});
+app.options("*", cors());
 
 // Parsers for POST data
 app.use(bodyParser.json());
