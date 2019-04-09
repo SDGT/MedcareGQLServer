@@ -16,10 +16,14 @@ export class httpRequests extends RESTDataSource {
   }
 
   httpGet(path: string, params?: any) {
-    return this.get(path, params);
+    let request = this.get(path, params);
+    console.log(request);
+    return request;
   }
 
   httpPost(path: string, body: any) {
-    return this.post(path, body);
+    let request = this.get(path, body);
+    console.log(request);
+    return request;
   }
 }
