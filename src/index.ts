@@ -34,7 +34,7 @@ const eureka = new Eureka({
     app: "GRAPHQL-SERVICE",
     hostName: "localhost:3000",
     ipAddr: "127.0.0.1",
-    statusPageUrl: "http://localhost:3000",
+    statusPageUrl: "http://medcaredev:graphql-service:3000",
     port: {
       $: port,
       "@enabled": "true"
