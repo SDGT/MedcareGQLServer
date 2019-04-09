@@ -51,13 +51,14 @@ const eureka = new Eureka({
     servicePath: "/eureka/apps/"
   }
 });
-eureka.start((error: any) => {
-  console.log(error || "complete");
-});
 
 // start the Express server
 app.listen(port, () => {
   // tslint:disable-next-line:no-console
   process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
   console.log(`server started at http://localhost:${port}`);
+});
+
+eureka.start((error: any) => {
+  console.log(error || "complete");
 });
