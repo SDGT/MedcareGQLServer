@@ -56,7 +56,7 @@ app.get("*", (req, res) => {
 const eureka = new Eureka({
   instance: {
     app: "GRAPHQL-SERVICE",
-    hostName: "localhost",
+    hostName: "192.168.120.14:3000",
     ipAddr: "127.0.0.1",
     statusPageUrl: "http://192.168.120.14:3000/graphql",
     port: {
