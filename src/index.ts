@@ -5,9 +5,13 @@ import router from "./server/routes/api";
 import cors from "cors";
 import apolloserver from "./server/apolloserver";
 const Eureka = require("eureka-js-client").Eureka;
+import dotenv from "dotenv";
+
+// initialize configuration
+dotenv.config();
 
 const app = express();
-const port = 3000; // default port to listen
+const port = process.env.SERVER_PORT; // default port to listen
 app.use(cors());
 app.options("*", cors());
 
@@ -56,9 +60,9 @@ app.get("*", (req, res) => {
 const eureka = new Eureka({
   instance: {
     app: "GRAPHQL-SERVICE",
-    hostName: "192.168.120.14:3000",
+    hostName: process.env.EUREKA_IP + ":" + process.env.SERVER_PORT,
     ipAddr: "127.0.0.1",
-    statusPageUrl: "http://192.168.120.14:3000/graphql",
+    //statusPageUrl: "http://192.168.120.14:3000/graphql",
     port: {
       $: port,
       "@enabled": "true"
@@ -70,8 +74,8 @@ const eureka = new Eureka({
     }
   },
   eureka: {
-    host: "192.168.120.14",
-    port: 8761,
+    host: process.env.EUREKA_IP,
+    port: process.env.EUREKA_PORT,
     servicePath: "/eureka/apps/"
   }
 });
