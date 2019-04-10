@@ -12,7 +12,7 @@
       "preLaunchTask": "tsc: build - tsconfig.json",
       "outFiles": [
         "${workspaceFolder}/webapp-distribution/**/*.js",
-        "${workspaceFolder}/webapp-distribution/**/*.env"
+        "${workspaceFolder}/webapp-distribution/*.env"
       ]
     }
   ]
