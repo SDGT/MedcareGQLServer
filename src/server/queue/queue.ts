@@ -4,25 +4,25 @@ import { httpRequests } from "../../utilities/http-request";
 export const queueschema = makeExecutableSchema({
   typeDefs: `
     type Queue {
-        callBy: String!
-        createdBy: String!
-        date: String!
-        datetime: String!
-        department: String!
-        doctor: String!
-        encounterNo: String!
-        id: String!
-        mrn: String!
-        noShowBy: String!
-        patientNm: String!
-        roomNo: String!
-        sequenceNumber: String!
-        status: String!
-        tokenNo: String!
-        unitCode: String!
+        callBy: String
+        createdBy: String
+        date: String
+        datetime: String
+        department: String
+        doctor: String
+        encounterNo: String
+        id: String
+        mrn: String
+        noShowBy: String
+        patientNm: String
+        roomNo: String
+        sequenceNumber: String
+        status: String
+        tokenNo: String
+        unitCode: String
       }
       type Query {
-        queuesFiltered(doctor: String!, department: String!): [Queue]
+        queuesFiltered(doctor: String, department: String): [Queue]
         queues: [Queue]
       }
     `
