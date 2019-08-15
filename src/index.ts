@@ -71,7 +71,8 @@ const eureka = new Eureka({
     dataCenterInfo: {
       "@class": "com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo",
       name: "MyOwn"
-    }
+    },
+    healthCheckUrl: 'http://' + process.env.EUREKA_IP + ":" + process.env.SERVER_PORT + "/graphql",
   },
   eureka: {
     host: process.env.EUREKA_IP,
