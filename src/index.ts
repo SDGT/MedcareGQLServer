@@ -6,6 +6,7 @@ import cors from "cors";
 import apolloserver from "./server/apolloserver";
 const Eureka = require("eureka-js-client").Eureka;
 import dotenv from "dotenv";
+import { socketService } from "./server/sockets/httpSocket";
 
 // initialize configuration
 dotenv.config();
@@ -91,3 +92,7 @@ app.listen(port, () => {
 eureka.start((error: any) => {
   console.log(error || "complete");
 });
+
+const httpSocket = new socketService();
+
+httpSocket.gethttpSocket(app);
