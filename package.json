@@ -20,7 +20,9 @@
     "eureka-js-client": "^4.4.2",
     "express": "^4.16.4",
     "graphql": "^14.1.1",
-    "graphql-tools": "^4.0.4"
+    "graphql-tools": "^4.0.4",
+    "no-kafka": "^3.4.3",
+    "socket.io": "^2.2.0"
   },
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
