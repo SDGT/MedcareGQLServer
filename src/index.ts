@@ -6,6 +6,7 @@ import cors from "cors";
 import apolloserver from "./server/apolloserver";
 const Eureka = require("eureka-js-client").Eureka;
 import dotenv from "dotenv";
+import { socketService } from "./server/sockets/httpSocket";
 
 // initialize configuration
 dotenv.config();
@@ -71,7 +72,8 @@ const eureka = new Eureka({
     dataCenterInfo: {
       "@class": "com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo",
       name: "MyOwn"
-    }
+    },
+    healthCheckUrl: 'http://' + process.env.EUREKA_IP + ":" + process.env.SERVER_PORT + "/graphql",
   },
   eureka: {
     host: process.env.EUREKA_IP,
@@ -90,3 +92,7 @@ app.listen(port, () => {
 eureka.start((error: any) => {
   console.log(error || "complete");
 });
+
+const httpSocket = new socketService();
+
+httpSocket.gethttpSocket(app);
