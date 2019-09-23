@@ -1,10 +1,11 @@
 
 export class socketService{
 
-    gethttpSocket(app){
+    gethttpSocket(app, port){
         let http = require('http').Server(app);
         let io = require('socket.io')(http);
         var Kafka = require('no-kafka');
+        let socket_port = port;
 
         io.on('connection', (socket) => {
             console.log('USER CONNECTED');
@@ -15,8 +16,8 @@ export class socketService{
 
         });
 
-        http.listen(9092, () => {
-            console.log('started on port 9092');
+        http.listen(socket_port, () => {
+            console.log('started on port ' + socket_port);
             var consumer = new Kafka.SimpleConsumer({
                 connectionString: 'localhost:9092',
                 clientId: 'no-kafka-client'

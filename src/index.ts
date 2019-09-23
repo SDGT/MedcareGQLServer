@@ -95,4 +95,4 @@ eureka.start((error: any) => {
 
 const httpSocket = new socketService();
 
-httpSocket.gethttpSocket(app);
+httpSocket.gethttpSocket(app, process.env.SOCKET_PORT);
