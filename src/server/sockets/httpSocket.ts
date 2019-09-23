@@ -19,7 +19,7 @@ export class socketService{
         http.listen(socket_port, () => {
             console.log('started on port ' + socket_port);
             var consumer = new Kafka.SimpleConsumer({
-                connectionString: 'localhost:9092',
+                connectionString: '192.168.120.15:9092',
                 clientId: 'no-kafka-client'
             }); 
 
@@ -29,11 +29,11 @@ export class socketService{
                     console.log(topic, partition, m.offset, m.message.value.toString('utf8'));
                     if(topic=="MEDCARE_QMS")
                     {
-                        io.emit('encounterToken', {x:(new Date()).getTime(), y: m.message.value.toString('utf8')});
+                        io.emit('encounterToken', {data: m.message.value.toString('utf8')});
                     }
                     else
                     {
-                        io.emit('message', {x:(new Date()).getTime(), y: m.message.value.toString('utf8')});
+                        io.emit('message', {data: m.message.value.toString('utf8')});
                     }
                 });
             };
