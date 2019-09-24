@@ -19,7 +19,7 @@ export class socketService{
         http.listen(socket_port, () => {
             console.log('started on port ' + socket_port);
             var consumer = new Kafka.SimpleConsumer({
-                connectionString: '192.168.120.15:9092',
+                connectionString: 'localhost:9092',
                 clientId: 'no-kafka-client'
             }); 
 
