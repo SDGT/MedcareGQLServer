@@ -82,6 +82,29 @@ const eureka = new Eureka({
   }
 });
 
+const socketEureka = new Eureka({
+  instance: {
+    app: "SOCKET-SERVICE",
+    hostName: process.env.EUREKA_IP + ":4500",
+    ipAddr: "127.0.0.1",
+    port: {
+      $: port,
+      "@enabled": "true"
+    },
+    vipAddress: "GRAPHQL-SERVICE",
+    dataCenterInfo: {
+      "@class": "com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo",
+      name: "MyOwn"
+    },
+    healthCheckUrl: 'http://' + process.env.EUREKA_IP + ":4500",
+  },
+  eureka: {
+    host: process.env.EUREKA_IP,
+    port: process.env.EUREKA_PORT,
+    servicePath: "/eureka/apps/"
+  }
+});
+
 // start the Express server
 app.listen(port, () => {
   // tslint:disable-next-line:no-console
@@ -90,6 +113,10 @@ app.listen(port, () => {
 });
 
 eureka.start((error: any) => {
+  console.log(error || "complete");
+});
+
+socketEureka.start((error: any) => {
   console.log(error || "complete");
 });
 
