@@ -27,13 +27,14 @@ export class socketService{
             var dataHandler = function (messageSet, topic, partition) {
                 messageSet.forEach(function (m) {
                     console.log(topic, partition, m.offset, m.message.value.toString('utf8'));
-                    if(topic=="MEDCARE_QMS")
+                    var queues = { queues: m.message.value.toString('utf8') };
+                    if(topic == "MEDCARE_QMS")
                     {
-                        io.emit('encounterToken', {data: m.message.value.toString('utf8')});
+                        io.emit('encounterToken', { data: queues });
                     }
                     else
                     {
-                        io.emit('message', {data: m.message.value.toString('utf8')});
+                        io.emit('message', { data: queues });
                     }
                 });
             };
