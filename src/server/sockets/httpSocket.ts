@@ -38,13 +38,24 @@ export class socketService{
                     }
                 });
             };
-
+            var dataNotificationHandler = function (messageSet, topic, partition) {
+                messageSet.forEach(function (m) {
+                    var queues = { "queues": m.message.value.toString('utf8') };
+                    if(topic == "NOTIFICATION") {
+                        io.emit('NOTIFICATION', { "data": queues });
+                    } else if (topic == "PUSH_NOTIFICATION") {
+                        io.emit('PUSH_NOTIFICATION', { "data": queues });
+                    }
+                });
+            };
             return consumer.init().then(function () {
                 // Subscribe partitons 0 and 1 in a topic: 
                 var v1= consumer.subscribe('MEDCARE_QMS', dataHandler);
+                var v2= consumer.subscribe('NOTIFICATION', dataNotificationHandler);
+                var v3= consumer.subscribe('PUSH_NOTIFICATION', dataNotificationHandler);
                 //var v2= consumer.subscribe('MEDCARE_QMS', [0, 1], dataHandler);
                 var arr=[];
-                arr.push([v1]);
+                arr.push([v1, v2, v3]);
                 //arr.push([v1,v2]);
                 console.log("val:"+arr);
                 return arr;
