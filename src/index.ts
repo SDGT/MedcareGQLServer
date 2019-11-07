@@ -85,13 +85,13 @@ const eureka = new Eureka({
 const socketEureka = new Eureka({
   instance: {
     app: "SOCKET-SERVICE",
-    hostName: process.env.EUREKA_IP + ":4500",
+    hostName: process.env.EUREKA_IP + ":"+process.env.SOCKET_PORT,
     ipAddr: "127.0.0.1",
     port: {
       $: port,
       "@enabled": "true"
     },
-    vipAddress: "GRAPHQL-SERVICE",
+    vipAddress: "SOCKET-SERVICE",
     dataCenterInfo: {
       "@class": "com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo",
       name: "MyOwn"
