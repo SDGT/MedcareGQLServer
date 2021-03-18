@@ -112,9 +112,9 @@ app.listen(port, () => {
   console.log(`server started at http://localhost:${port}`);
 });
 
-eureka.start((error: any) => {
-  console.log(error || "complete");
-});
+// eureka.start((error: any) => {
+//   console.log(error || "complete");
+// });
 
 socketEureka.start((error: any) => {
   console.log(error || "complete");
