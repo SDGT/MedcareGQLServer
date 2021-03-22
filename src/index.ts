@@ -51,36 +51,36 @@ app.use("/api", router);
 
 const server = apolloserver;
 
-//server.applyMiddleware({ app, path: "/graphql" });mohsin
+server.applyMiddleware({ app, path: "/graphql" });
 
 // Catch all other routes and return the index file
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
-//mohsin
-// const eureka = new Eureka({
-//   instance: {
-//     app: "GRAPHQL-SERVICE",
-//     hostName: process.env.EUREKA_IP + ":" + process.env.SERVER_PORT,
-//     ipAddr: "127.0.0.1",
-//     //statusPageUrl: "http://192.168.120.14:3000/graphql",
-//     port: {
-//       $: port,
-//       "@enabled": "true"
-//     },
-//     vipAddress: "GRAPHQL-SERVICE",
-//     dataCenterInfo: {
-//       "@class": "com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo",
-//       name: "MyOwn"
-//     },
-//     healthCheckUrl: 'http://' + process.env.EUREKA_IP + ":" + process.env.SERVER_PORT + "/graphql",
-//   },
-//   eureka: {
-//     host: process.env.EUREKA_IP,
-//     port: process.env.EUREKA_PORT,
-//     servicePath: "/eureka/apps/"
-//   }
-// });
+
+const eureka = new Eureka({
+  instance: {
+    app: "GRAPHQL-SERVICE",
+    hostName: process.env.EUREKA_IP + ":" + process.env.SERVER_PORT,
+    ipAddr: "127.0.0.1",
+    //statusPageUrl: "http://192.168.120.14:3000/graphql",
+    port: {
+      $: port,
+      "@enabled": "true"
+    },
+    vipAddress: "GRAPHQL-SERVICE",
+    dataCenterInfo: {
+      "@class": "com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo",
+      name: "MyOwn"
+    },
+    healthCheckUrl: 'http://' + process.env.EUREKA_IP + ":" + process.env.SERVER_PORT + "/graphql",
+  },
+  eureka: {
+    host: process.env.EUREKA_IP,
+    port: process.env.EUREKA_PORT,
+    servicePath: "/eureka/apps/"
+  }
+});
 
 const socketEureka = new Eureka({
   instance: {
@@ -112,9 +112,9 @@ app.listen(port, () => {
   console.log(`server started at http://localhost:${port}`);
 });
 
-// eureka.start((error: any) => {
-//   console.log(error || "complete");
-// });
+eureka.start((error: any) => {
+  console.log(error || "complete");
+});
 
 socketEureka.start((error: any) => {
   console.log(error || "complete");
